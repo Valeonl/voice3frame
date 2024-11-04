@@ -1,0 +1,83 @@
+.initial-loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3000;
+  opacity: 1;
+  transition: opacity 0.8s ease, visibility 0.8s ease;
+  visibility: visible;
+}
+
+.initial-loader.fade-out {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.loader-content {
+  text-align: center;
+  transform: scale(1);
+  transition: transform 0.5s ease;
+}
+
+.initial-loader.fade-out .loader-content {
+  transform: scale(0.8);
+}
+
+.spinner {
+  font-size: 120px;
+  color: #4CAF50;
+  margin-bottom: 2rem;
+  opacity: 0;
+  animation: fadeIn 0.5s ease forwards;
+}
+
+.loader-text {
+  font-size: 1.5rem;
+  color: #666;
+  letter-spacing: 1px;
+}
+
+.dot-1, .dot-2, .dot-3 {
+  opacity: 0;
+  animation: dotAnimation 1.4s infinite;
+}
+
+.dot-2 {
+  animation-delay: 0.2s;
+}
+
+.dot-3 {
+  animation-delay: 0.4s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes dotAnimation {
+  0% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+} 
