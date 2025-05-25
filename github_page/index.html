@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/custom-diagram.css">
+    <link rel="stylesheet" href="styles/video-player.css">
 
     <title>Автоматизация процесса видеомонтажа средствами голосового управления</title>
 </head>
@@ -76,46 +77,161 @@
                         <!-- Сообщения будут добавляться динамически -->
                     </div>
                 </div>
-                
-                <div class="row mt-4">
-                    <div class="col-md-12">
-                        <h4>Пример взаимодействия с системой (диалог)</h4>
-                        <p>Ниже представлен типичный сценарий использования системы:</p>
-                        <pre><code>Пользователь: "Найди момент, где я говорю о новой функции, и вырежи его."
-Система: "Нашла 3 фрагмента, где упоминается 'новая функция'. Уточните, какой из них?"
-Пользователь: "Второй."
-Система: "Вырезаю второй фрагмент (00:15:32 - 00:16:05) и сохраняю как 'новая_функция_клип.mp4'."</code></pre>
-                        <p><em>Этот диалог можно будет в будущем сделать интерактивным или анимированным с помощью JavaScript.</em></p>
-                    </div>
-                </div>
             </section>
 
             <!-- Демонстрация ключевых функций системы -->
             <section id="key-features-demo">
-                <h2 class="section-title">Демонстрация ключевых функций системы</h2>
+                <h2 class="section-title">Демонстрация работы Adobe Voice</h2>
                 <div class="row">
-                    <div class="col-md-6">
-                        <h4>Анимация 1: Процесс распознавания речи</h4>
+                    <div class="col-md-6 d-flex flex-column">
+                        <h4>Анимация 1: Процесс распознавания речи (режим: одиночный)</h4>
                         <p>Демонстрация того, как система воспринимает голосовую команду и преобразует ее в текст.</p>
-                        <div class="image-placeholder-container">
-                            <div class="image-placeholder" data-source-details="Анимация/GIF: Распознавание речи">
-                                <div class="placeholder-text">Анимация/GIF: Распознавание речи<br>(Создайте GIF/видео этого процесса)</div>
+                        <div class="video-player-container mt-auto">
+                            <video id="transcribeVideo" playsinline>
+                                <source src="video/cut_command_transcribe_example.mp4" type="video/mp4">
+                                Ваш браузер не поддерживает видео тег.
+                            </video>
+                            <div class="sound-hint">
+                                <i class="fas fa-volume-mute"></i>
+                                <span>Наведите для воспроизведения звука</span>
+                            </div>
+                            <div class="video-controls">
+                                <div class="progress-bar">
+                                    <div class="progress-fill"></div>
+                                </div>
+                                <div class="time-marks">
+                                    <!-- Таймкоды будут добавлены автоматически -->
+                                </div>
+                                <div class="video-controls-buttons">
+                                    <button class="control-button play-pause-btn">
+                                        <i class="fas fa-play"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="replay-overlay">
+                                <button class="replay-button">Просмотреть ещё раз</button>
                             </div>
                         </div>
                     </div>
+                    <div class="col-md-6 d-flex flex-column">
+                        <h4>Анимация 2: Процесс распознавания речи (режим: непрерывный)</h4>
+                        <p>Демонстрация того, как система воспринимает голосовую команду и преобразует ее в текст при непрерывном режиме работы.</p>
+                        <div class="video-player-container mt-auto">
+                            <video id="transcribeVideo" playsinline>
+                                <source src="video/continuos_mode_example.mp4" type="video/mp4">
+                                Ваш браузер не поддерживает видео тег.
+                            </video>
+                            <div class="sound-hint">
+                                <i class="fas fa-volume-mute"></i>
+                                <span>Наведите для воспроизведения звука</span>
+                            </div>
+                            <div class="video-controls">
+                                <div class="progress-bar">
+                                    <div class="progress-fill"></div>
+                                </div>
+                                <div class="time-marks">
+                                    <!-- Таймкоды будут добавлены автоматически -->
+                                </div>
+                                <div class="video-controls-buttons">
+                                    <button class="control-button play-pause-btn">
+                                        <i class="fas fa-play"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="replay-overlay">
+                                <button class="replay-button">Просмотреть ещё раз</button>
+                            </div>
+                        </div>  
+                    </div>
+                </div>
+            </section>
+
+            <!-- Демонстрация работы с голосовыми командами -->
+            <section id="voice-commands-demo">
+                <h2 class="section-title">Демонстрация работы с голосовыми командами</h2>
+                
+                <!-- Блок 1: Инициализация системы -->
+                <div class="row mb-5">
                     <div class="col-md-6">
-                        <h4>Анимация 2: Выполнение команды в видеоредакторе</h4>
-                        <p>Показ того, как распознанная команда приводит к действию в интерфейсе видеоредактора.</p>
+                        <div class="demo-text-block">
+                            <h3>Инициализация системы</h3>
+                            <p>Система автоматически инициализирует распознавание речи при загрузке страницы. Проверяется поддержка браузером Web Speech API и устанавливаются необходимые параметры для работы с русским языком.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
                         <div class="image-placeholder-container">
-                            <div class="image-placeholder" data-source-details="Анимация/GIF: Команда в редакторе">
-                                <div class="placeholder-text">Анимация/GIF: Команда в редакторе<br>(Создайте GIF/видео этого процесса)</div>
+                            <div class="image-placeholder" data-source-details="Анимация: Инициализация системы">
+                                <div class="placeholder-text">Анимация: Инициализация системы<br>(В процессе размещения)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Блок 2: Распознавание команд -->
+                <div class="row mb-5">
+                    <div class="col-md-6 order-md-2">
+                        <div class="demo-text-block">
+                            <h3>Распознавание команд</h3>
+                            <p>Система использует непрерывное распознавание речи, что позволяет обрабатывать команды в реальном времени. Каждая команда проходит через процесс нормализации и сопоставления с зарегистрированными шаблонами.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 order-md-1">
+                        <div class="image-placeholder-container">
+                            <div class="image-placeholder" data-source-details="Анимация: Распознавание команд">
+                                <div class="placeholder-text">Анимация: Распознавание команд<br>(В процессе размещения)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Блок 3: Выполнение команд -->
+                <div class="row mb-5">
+                    <div class="col-md-12">
+                        <div class="demo-text-block text-center mb-4">
+                            <h3>Выполнение команд</h3>
+                            <p>После успешного распознавания команды, система выполняет соответствующее действие в видеоредакторе. Каждая команда имеет свой обработчик, который определяет конкретные действия.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="image-placeholder-container">
+                            <div class="image-placeholder" data-source-details="Анимация: Команда обрезки">
+                                <div class="placeholder-text">Анимация: Команда обрезки<br>(В процессе размещения)</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="image-placeholder-container">
+                            <div class="image-placeholder" data-source-details="Анимация: Команда удаления">
+                                <div class="placeholder-text">Анимация: Команда удаления<br>(В процессе размещения)</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="image-placeholder-container">
+                            <div class="image-placeholder" data-source-details="Анимация: Команда вставки">
+                                <div class="placeholder-text">Анимация: Команда вставки<br>(В процессе размещения)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Блок 4: Обработка ошибок -->
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="demo-text-block">
+                            <h3>Обработка ошибок</h3>
+                            <p>Система включает в себя механизм обработки ошибок, который позволяет корректно реагировать на неправильно распознанные команды или технические проблемы. Пользователь получает понятные сообщения об ошибках.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="image-placeholder-container">
+                            <div class="image-placeholder" data-source-details="Анимация: Обработка ошибок">
+                                <div class="placeholder-text">Анимация: Обработка ошибок<br>(В процессе размещения)</div>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
-
-           
 
             <!-- Проведенное исследование -->
             <section id="research-investigation">
@@ -128,9 +244,11 @@
                         </p>
                         
                         <h4>Устройства и материалы</h4>
+                        
                         <p>
                             Использовался конденсаторный микрофон [Модель], стандартный ПК с ОС Windows, видеоредактор [Название], библиотека распознавания речи [Название].
                         </p>
+                        
                     </div>
                 </div>
             </section>
@@ -165,12 +283,32 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/main.js"></script>
     <script src="js/diagram.js"></script>
+    <script src="js/video-player.js"></script>
+    <script src="js/voice-command-api.js"></script>
+    <script src="js/voice-command-demo.js"></script>
     
     <script>
         // Инициализация частиц, если они есть
         if (typeof particlesJS !== 'undefined') {
             particlesJS.load('particles-js', 'particlesjs-config.json');
         }
+
+        // Обработка звука при наведении
+        document.addEventListener('DOMContentLoaded', () => {
+            const videoContainers = document.querySelectorAll('.video-player-container');
+            
+            videoContainers.forEach(container => {
+                const video = container.querySelector('video');
+                
+                container.addEventListener('mouseenter', () => {
+                    video.muted = false;
+                });
+                
+                container.addEventListener('mouseleave', () => {
+                    video.muted = true;
+                });
+            });
+        });
     </script>
 </body>
 </html>

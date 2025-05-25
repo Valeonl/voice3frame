@@ -101,7 +101,7 @@ function playDemo() {
             type: 'user',
             sender: 'Пользователь',
             role: 'Запись голоса',
-            audio: '/speech_examples/conversation_1_role_I_1.mp3',
+            audio: '/speech_examples/cut_command_sample.mp3',
             isRecording: true,
             audioMessageHtml: `
                 <div class="audio-message">

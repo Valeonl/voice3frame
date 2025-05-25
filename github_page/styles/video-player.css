@@ -1,0 +1,360 @@
+.video-player-container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    border-radius: 12px;
+    overflow: hidden;
+    background: #fff;
+    transition: all 0.3s ease;
+}
+
+.video-player-container:hover {
+    box-shadow: 0 0 0 6px #4285f4;
+}
+
+.video-player-container video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    cursor: pointer;
+    background: #fff;
+}
+
+.video-controls {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    width: 100%;
+    padding: 15px 20px 0%;
+    background: linear-gradient(transparent, rgba(255, 255, 255, 0.9));
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.video-player-container:hover .video-controls {
+    opacity: 1;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 12px;
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 6px;
+    position: relative;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
+.progress-fill {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    background: #4285f4;
+    border-radius: 6px;
+    transition: width 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: width;
+}
+
+.time-marks {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 2px;
+    position: relative;
+    margin-top: 20px;
+}
+
+.time-mark {
+    color: #333;
+    font-size: 13px;
+    font-weight: 500;
+    font-family: 'Fira Code', monospace;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: color 0.3s ease;
+}
+
+.time-mark.active {
+    color: #4285f4;
+    font-weight: 600;
+}
+
+.time-mark::before {
+    content: '';
+    width: 10px;
+    height: 10px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+    position: absolute;
+    top: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.time-mark.active::before {
+    background: #4285f4;
+    transform: translateX(-50%) scale(1.2);
+}
+
+.video-controls-buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+.control-button {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 5px;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.control-button:hover {
+    opacity: 1;
+}
+
+.replay-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.replay-overlay.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.replay-button {
+    background: rgba(66, 133, 244, 0.9);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.replay-button:hover {
+    background: rgba(66, 133, 244, 1);
+}
+
+.sound-hint {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.9);
+    color: #333;
+    padding: 15px 25px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    z-index: 1;
+    transition: opacity 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.sound-hint i {
+    font-size: 24px;
+    color: #4285f4;
+}
+
+.sound-hint span {
+    font-size: 14px;
+    text-align: center;
+}
+
+.video-player-container:hover .sound-hint {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Стили для демонстрации голосовых команд */
+.voice-command-demo {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.status-indicator {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.status-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #ccc;
+    transition: background-color 0.3s ease;
+}
+
+.status-dot.listening {
+    background: #4285f4;
+    animation: pulse 1.5s infinite;
+}
+
+.status-text {
+    color: #666;
+    font-size: 14px;
+}
+
+.command-log {
+    margin: 20px 0;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.command-log h4 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.log-container {
+    max-height: 200px;
+    overflow-y: auto;
+    font-family: 'Fira Code', monospace;
+    font-size: 13px;
+}
+
+.log-entry {
+    padding: 5px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.log-entry:last-child {
+    border-bottom: none;
+}
+
+.log-entry.command {
+    color: #4285f4;
+}
+
+.log-entry.error {
+    color: #dc3545;
+}
+
+.command-controls {
+    display: flex;
+    gap: 10px;
+}
+
+.command-controls button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+}
+
+.command-controls button i {
+    font-size: 16px;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 0.7;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Стили для демонстрации Voice Command API */
+.demo-text-block {
+    padding: 20px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    height: 100%;
+}
+
+.demo-text-block h3 {
+    color: #333;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+.demo-text-block p {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+.image-placeholder-container {
+    height: 100%;
+    min-height: 300px;
+    margin-bottom: 20px;
+}
+
+.image-placeholder {
+    width: 100%;
+    height: 100%;
+    background: #f8f9fa;
+    border: 2px dashed #dee2e6;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    transition: all 0.3s ease;
+}
+
+.image-placeholder:hover {
+    border-color: #4285f4;
+    background: #f0f7ff;
+}
+
+.placeholder-text {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+/* Адаптивные стили */
+@media (max-width: 768px) {
+    .demo-text-block {
+        margin-bottom: 20px;
+    }
+    
+    .image-placeholder-container {
+        min-height: 200px;
+    }
+} 
