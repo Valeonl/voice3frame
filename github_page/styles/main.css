@@ -1,0 +1,697 @@
+/* Импорт внешних стилей */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css');
+@import url('https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css');
+@import url('../files/bootstrap.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* Основные переменные */
+:root {
+    --primary-color: #1a73e8;
+    --secondary-color: #4285f4;
+    --accent-color: #34a853;
+    --background-light: #f8f9fa;
+    --text-primary: #202124;
+    --text-secondary: #5f6368;
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Общие стили */
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text-primary);
+    background-color: var(--background-light);
+    line-height: 1.6;
+}
+
+/* Контейнеры */
+.banner-container {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 6rem 0;
+    margin-bottom: 3rem;
+    border-radius: 0 0 3rem 3rem;
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    overflow: hidden;
+}
+
+.main-container {
+    background: white;
+    border-radius: 1.5rem;
+    padding: 2rem;
+    margin-bottom: 3rem;
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    z-index: 1;
+}
+
+.outer-container {
+    position: relative;
+    z-index: 1;
+    padding: 0 1rem;
+}
+
+#particles-js {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Заголовки */
+.section-title {
+    font-weight: 700;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background: var(--accent-color);
+    border-radius: 2px;
+}
+
+/* Карточки контактов */
+.contact-card {
+    background: var(--background-light);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+}
+
+.contact-icon {
+    font-size: 2rem;
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+}
+
+/* Датасет */
+.dataset-controls {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    margin-bottom: 1.5rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.dataset-table {
+    background: white;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+}
+
+.dataset-table td {
+    max-height: 80px;
+    height: 80px;
+    vertical-align: middle;
+    position: relative;
+}
+
+.dataset-table .text-cell {
+    max-height: 80px;
+    overflow: hidden;
+    position: relative;
+    padding-right: 25px; /* Место для кнопки */
+}
+
+.dataset-table .text-cell.expanded {
+    max-height: none;
+}
+
+.dataset-table .text-cell.has-more::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    background: linear-gradient(transparent, white);
+    pointer-events: none;
+}
+
+.dataset-table .text-cell.expanded::after {
+    display: none;
+}
+
+.expand-button {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    cursor: pointer;
+    padding: 0;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+
+.expand-button:hover {
+    color: var(--secondary-color);
+}
+
+.expand-button.expanded {
+    transform: translateY(-50%) rotate(180deg);
+}
+
+/* DataTables кастомизация */
+.dataTables_wrapper .dataTables_paginate .paginate_button.current {
+    background: var(--primary-color) !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 0.5rem;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    background: var(--secondary-color) !important;
+    color: white !important;
+    border: none !important;
+}
+
+/* Демо-контейнер */
+.demo-container {
+    background: var(--background-light);
+    border-radius: 1rem;
+    padding: 2rem;
+    margin: 2rem 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.demo-player {
+    margin-top: 20px;
+}
+
+.demo-content {
+    margin-top: 20px;
+}
+
+/* Диалоги */
+.dialog-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: white;
+    border-radius: 1.5rem;
+    box-shadow: var(--shadow-lg);
+}
+
+.message {
+    display: flex;
+    margin-bottom: 25px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s ease;
+    width: 100%;
+}
+
+.message.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Сообщения слева */
+.message.user,
+.message.voice-command-api {
+    flex-direction: row;
+}
+
+/* Сообщения справа */
+.message.adobe-voice,
+.message.premiere-controller {
+    flex-direction: row-reverse;
+}
+
+.message-avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 12px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 15px;
+    flex-shrink: 0;
+    font-size: 1.2rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.message.user .message-avatar {
+    background: linear-gradient(135deg, #4a90e2, #357abd);
+}
+
+.message.system .message-avatar {
+    background: linear-gradient(135deg, #2ecc71, #27ae60);
+}
+
+.message.adobe-voice .message-avatar {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+}
+
+.message.voice-command-api .message-avatar {
+    background: linear-gradient(135deg, #9b59b6, #8e44ad);
+}
+
+.message.premiere-controller .message-avatar {
+    background: linear-gradient(135deg, #f1c40f, #f39c12);
+}
+
+.message-content {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 15px;
+    max-width: 70%;
+    box-shadow: var(--shadow-sm);
+}
+
+/* Стили для сообщений слева */
+.message.user .message-content,
+.message.voice-command-api .message-content {
+    border-top-left-radius: 0;
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+}
+
+/* Стили для сообщений справа */
+.message.adobe-voice .message-content,
+.message.premiere-controller .message-content {
+    border-top-right-radius: 0;
+    background: linear-gradient(135deg, #e9ecef, #f8f9fa);
+}
+
+.message-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.message-sender {
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-right: 10px;
+}
+
+.message-role {
+    font-size: 0.8em;
+    color: var(--text-secondary);
+    background: rgba(0, 0, 0, 0.05);
+    padding: 2px 8px;
+    border-radius: 10px;
+}
+
+.message-text {
+    margin-bottom: 12px;
+    line-height: 1.5;
+    color: var(--text-primary);
+}
+
+.message-interpretation {
+    background: #e9ecef;
+    padding: 12px;
+    border-radius: 8px;
+    font-family: 'Fira Code', monospace;
+    margin-top: 12px;
+    font-size: 0.9em;
+    border-left: 3px solid var(--primary-color);
+}
+
+.message-details {
+    background: #e9ecef;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 0.9em;
+    margin-top: 12px;
+    border-left: 3px solid var(--accent-color);
+}
+
+.recording-indicator {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 10px;
+    animation: pulse 1.5s infinite;
+}
+
+.recording-indicator i {
+    color: #e74c3c;
+    font-size: 0.8em;
+    margin-right: 5px;
+}
+
+.recording-indicator::after {
+    content: 'Запись...';
+    font-size: 0.8em;
+    color: #e74c3c;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.3; }
+    100% { opacity: 1; }
+}
+
+/* Кнопки проигрывания */
+.play-button {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-sm);
+}
+
+.play-button:hover:not(.disabled) {
+    background: var(--secondary-color);
+    transform: scale(1.1);
+}
+
+.play-button:active:not(.disabled) {
+    transform: scale(0.95);
+}
+
+.play-button.disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.play-button.disabled:hover {
+    transform: none;
+    background: #ccc;
+}
+
+/* Транскрипция и интерпретация */
+#transcription, #interpretation {
+    padding: 1rem;
+    margin: 1rem 0;
+    background: white;
+    border-radius: 0.5rem;
+    border-left: 4px solid var(--secondary-color);
+}
+
+#interpretation {
+    border-left-color: var(--accent-color);
+}
+
+/* Утилиты */
+.hidden {
+    display: none;
+}
+
+section {
+    margin-bottom: 4rem;
+    padding-top: 2rem;
+}
+
+/* Image Placeholder Styles */
+.image-placeholder-container {
+    margin-bottom: 1.5rem; /* Add some space below placeholder */
+}
+
+.image-placeholder {
+    background-color: #e0e0e0; /* Light grey background */
+    border-radius: 8px; /* Rounded corners */
+    padding: 20px;
+    text-align: center;
+    color: #757575; /* Grey text */
+    min-height: 200px; /* Minimum height for the placeholder */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden; /* Important for the animation */
+    border: 1px dashed #bdbdbd; /* Optional: dashed border */
+}
+
+.image-placeholder::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    animation: loading-gradient 1.8s infinite;
+}
+
+.placeholder-text {
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+@keyframes loading-gradient {
+    0% {
+        left: -100%;
+    }
+    50% {
+        left: 100%;
+    }
+    100% {
+        left: 100%; /* Keep it off-screen at the end of one cycle before restarting */
+    }
+}
+
+/* Custom Diagram Styles */
+.diagram-container {
+    position: relative;
+    width: 100%;
+    min-height: 500px; /* Установите минимальную высоту */
+    /* background-color: #f8f9fa; Светлый фон */
+    border-radius: 1rem;
+    overflow: hidden;
+    margin-top: 20px;
+    box-shadow: var(--shadow-md); /* Добавим тень */
+    padding: 20px; /* Добавим внутренние отступы */
+}
+
+.arrows-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Чтобы SVG не перехватывал события мыши для узлов */
+    z-index: 1;
+}
+
+.arrows-svg line {
+    stroke: #333; /* Цвет стрелок */
+    stroke-width: 2;
+    transition: stroke-dashoffset 1s ease-in-out; /* Анимация рисования */
+    fill: none;
+}
+
+.arrows-svg marker path {
+    fill: #333; /* Цвет кончика стрелки */
+}
+
+.diagram-label {
+    fill: #333; /* Цвет текста подписей к стрелкам */
+    font-size: 12px;
+    text-anchor: middle;
+    pointer-events: none;
+    transition: fill 0.3s ease;
+}
+
+.diagram-node {
+    position: absolute;
+    width: 120px; /* Фиксированная ширина узла */
+    height: 120px; /* Фиксированная высота узла */
+    border-radius: 15px; /* Скругленные углы */
+    /* Убираем общий белый фон */
+    border: none; /* Убираем общую границу */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 10px;
+    box-shadow: var(--shadow-sm); /* Легкая тень */
+    cursor: pointer; /* Курсор при наведении */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; /* Сохраняем переходы */
+    z-index: 2; /* Узлы выше стрелок */
+    font-size: 0.9em;
+    color: white; /* Цвет текста для контраста с градиентом */
+}
+
+.diagram-node:hover {
+    transform: translateY(-5px); /* Подъем при наведении */
+    box-shadow: var(--shadow-md); /* Усиление тени при наведении */
+    border-color: transparent; /* Убираем подсветку границы, используем тень/трансформацию */
+}
+
+.diagram-node i {
+    font-size: 2.5em; /* Размер иконки */
+    margin-bottom: 5px;
+    color: white; /* Цвет иконки */
+}
+
+.diagram-node span {
+    font-weight: 500;
+    color: white; /* Цвет текста */
+}
+
+/* Стили для разных типов узлов с градиентами */
+.diagram-node.input-node {
+     background: linear-gradient(135deg, #34a853, #2c8c48); /* Зеленый градиент */
+}
+.diagram-node.input-node i { color: white; }
+
+.diagram-node.app-node {
+    background: linear-gradient(135deg, #fbbc05, #f0b303); /* Желтый/оранжевый градиент */
+}
+.diagram-node.app-node i { color: white; }
+
+.diagram-node.api-node {
+    background: linear-gradient(135deg, #4285f4, #357ae8); /* Синий градиент */
+}
+.diagram-node.api-node i { color: white; }
+
+.diagram-node.llm-node {
+    background: linear-gradient(135deg, #e74c3c, #c0392b); /* Красный градиент */
+}
+.diagram-node.llm-node i { color: white; }
+
+/* Блок с деталями компонента */
+#component-details {
+    position: absolute;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 15px;
+    max-width: 300px;
+    z-index: 10;
+    pointer-events: none; /* Не перехватывать события мыши */
+    opacity: 0; /* Скрываем по умолчанию */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    box-shadow: var(--shadow-md);
+}
+
+#component-details.visible {
+    opacity: 1; /* Показываем при необходимости */
+    transform: translateY(0);
+}
+
+#component-details h5 {
+    margin-top: 0;
+    color: var(--text-primary);
+}
+
+#component-details p {
+    margin-bottom: 0;
+    color: var(--text-secondary);
+    font-size: 0.9em;
+}
+
+/* Добавьте эти стили, если нужно убрать красные фоны, которых нет в текущем CSS */
+.diagram-node,
+.diagram-line,
+.diagram-label {
+    background-color: transparent !important; /* Убираем любой фоновый цвет */
+}
+
+/* Ensure arrows are styled properly */
+.arrows-svg line path {
+    fill: #333; /* Ensure arrowhead color matches line */
+}
+
+/* Styles for Audio Message */
+.audio-message {
+    display: flex;
+    align-items: center;
+    margin-top: 10px; /* Add some space above the audio message */
+    background-color: #e9ecef; /* Light background */
+    padding: 10px 15px;
+    border-radius: 20px; /* Pill shape */
+    max-width: 100%; /* Ensure it fits within the message content */
+}
+
+.audio-message .play-button {
+    background: #4a90e2; /* Primary color */
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 35px; /* Smaller button */
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-right: 10px; /* Space between button and waveform */
+    flex-shrink: 0; /* Prevent shrinking */
+    transition: background-color 0.2s ease;
+}
+
+.audio-message .play-button:hover {
+    background-color: #357abd; /* Darker shade on hover */
+}
+
+.audio-message .play-button i {
+    font-size: 1em; /* Icon size */
+}
+
+.audio-waveform-container {
+    flex-grow: 1; /* Take available space */
+    height: 25px; /* Height of the waveform area */
+    position: relative;
+    margin-right: 10px;
+    /* You would typically render an SVG or canvas waveform here */
+    /* For now, we use a placeholder */
+}
+
+.audio-waveform-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, #a0c3f7 1px, transparent 1px) repeat-x; /* Simple placeholder waves */
+    background-size: 5px 100%; /* Adjust size of waves */
+    opacity: 0.8;
+}
+
+.audio-progress-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0%; /* Will be updated by JS */
+    background-color: #4a90e2; /* Progress color */
+    z-index: 1; /* Above placeholder */
+    transition: width 0.1s linear;
+}
+
+.audio-duration {
+    font-size: 0.8em;
+    color: #5f6368; /* Secondary text color */
+    flex-shrink: 0; /* Prevent shrinking */
+}
+
+/* Adjust message content padding if needed for audio message */
+.message-content {
+    /* Keep existing styles, maybe adjust padding-left/right if the audio message needs more space */
+}

@@ -1,0 +1,184 @@
+.diagram-container {
+    position: relative;
+    width: 100%;
+    height: 500px; /* Adjust as needed */
+    border: 1px solid #ccc;
+    margin-top: 20px;
+    overflow: hidden; /* Hide overflow for elements outside the container */
+}
+
+.diagram-node {
+    position: absolute;
+    padding: 10px 15px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 120px;
+    min-height: 60px;
+    z-index: 2; /* Ensure nodes are above arrows */
+}
+
+.diagram-node:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.diagram-node.active {
+    animation: pulse 1s infinite alternate;
+}
+
+@keyframes pulse {
+    from { transform: scale(1); }
+    to { transform: scale(1.05); }
+}
+
+/* Node specific styles */
+.user-node {
+    background-color: #4e79a7;
+    border: 2px solid #2e5a8c;
+}
+
+.client-node {
+    background-color: #f28e2b;
+    border: 2px solid #d17a1a;
+}
+
+.server-node {
+    background-color: #76b7b2;
+    border: 2px solid #5a9a95;
+}
+
+.llm-node {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.app-node {
+    background-color: #e15759;
+    border: 2px solid #c04a4a;
+}
+
+.diagram-arrow {
+    position: absolute;
+    background-color: #333; /* For visibility, will be replaced by SVG or canvas lines */
+    height: 2px;
+    z-index: 1; /* Ensure arrows are below nodes */
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.diagram-arrow.active {
+    opacity: 1;
+    animation: dash 2s linear infinite;
+}
+
+@keyframes dash {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+.arrow-label {
+    position: absolute;
+    background-color: #fff;
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-size: 0.8em;
+    color: #333;
+    white-space: nowrap;
+    transform: translate(-50%, -50%);
+}
+
+.arrows-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Allows clicks to pass through to nodes */
+    overflow: visible; /* Ensure arrowheads are not clipped */
+}
+
+.diagram-line {
+    fill: none;
+    stroke: #333;
+    stroke-width: 2px;
+    transition: stroke-width 0.3s ease;
+    z-index: 1; /* Ensure arrows are below nodes */
+}
+
+.diagram-label {
+    font-size: 12px;
+    fill: #333;
+    pointer-events: none;
+}
+
+.diagram-node.highlight {
+    border: 2px solid #007bff;
+    box-shadow: 0 0 15px rgba(0, 123, 255, 0.6);
+    background-color: #e7f3ff; /* A subtle blue background for highlight */
+}
+
+.diagram-node i {
+    font-size: 2em;
+    margin-bottom: 5px;
+    color: #007bff; /* Or a color that fits the scheme */
+}
+
+.diagram-node span {
+    font-size: 0.9em;
+    text-align: center;
+    color: #000; /* Set text color to black */
+}
+
+#component-details {
+    position: absolute;
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    padding: 10px;
+    z-index: 1000;
+    display: none;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    max-width: 300px; /* Limit tooltip width */
+    pointer-events: none; /* Allow mouse events to pass through */
+}
+
+#component-details h5 {
+    margin-top: 0;
+    font-size: 1.1em;
+    color: #007bff;
+}
+
+#component-details p {
+    margin-bottom: 0;
+    font-size: 0.9em;
+    line-height: 1.4;
+}
+
+.diagram-line.highlight {
+    stroke: #007bff;
+    stroke-width: 3;
+    animation: flow 2s linear infinite;
+}
+
+@keyframes flow {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+.diagram-label.highlight {
+    fill: #007bff;
+    font-weight: bold;
+}
