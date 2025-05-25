@@ -163,3 +163,4 @@ npm start
 - Логирование операций
 - Статистика распознавания
 
+[![Спроси DeepWiki о репозитории](https://deepwiki.com/badge.svg)](https://deepwiki.com/Valeonl/voice3frame)
