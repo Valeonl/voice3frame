@@ -2,7 +2,7 @@
 
 ![image](https://github.com/user-attachments/assets/7b45a6e9-3e44-4557-8815-fa7b11551c94)
 
-[![Перейти к сайту с описанием системы и проведённого исследования](https://img.shields.io/badge/GitHub_Pages-Voice3Frame_Сайт-blue?style=for-the-badge&logo=github)]([https://github.com/Valeonl/voice3frame](https://valeonl.github.io/voice3frame/))
+[![Перейти к сайту с описанием системы и проведённого исследования](https://img.shields.io/badge/GitHub_Pages-Voice3Frame_Сайт-blue?style=for-the-badge&logo=github)](https://valeonl.github.io/voice3frame/)
 
 
 
